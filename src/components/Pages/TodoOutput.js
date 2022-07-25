@@ -38,6 +38,10 @@ const TodoOutput = () => {
                     <AiFillEdit className='text-4xl p-1 text-blue-400 hover:text-blue-600 border rounded-md'></AiFillEdit>
                     <AiFillDelete className='text-4xl p-1 text-red-400 hover:text-red-600 border rounded-md'></AiFillDelete>
                 </div>
+                <div className='flex justify-center gap-2 py-2'>
+                    <button className='btn btn-xs btn-error rounded-md'>Delete All</button>
+                    <button className='btn btn-xs btn-success rounded-md'>Completed</button>
+                </div>
             </div>
         </div>
     );
