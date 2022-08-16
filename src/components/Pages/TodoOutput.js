@@ -6,7 +6,7 @@ const TodoOutput = () => {
         <div className='mt-5'>
             <h4 className='font-mono pb-4'>All Tasks</h4>
             <div>
-                <div className='flex justify-center items-center gap-2 py-2 hover:scale-105 duration-300 transition ease-in-out delay-150 hover:-translate-y-1'>
+                <div className='flex justify-center items-center gap-2 py-2 hover:scale-105 duration-300 transition ease-in-out delay-250 hover:-translate-y-1'>
                     <input
                         className='h-8 w-8 accent-green-400'
                         type="checkbox" name="todoCheck" id="" />
