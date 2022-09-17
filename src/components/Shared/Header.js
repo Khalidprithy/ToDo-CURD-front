@@ -11,14 +11,14 @@ const Header = () => {
             <div
                 onMouseEnter={() => setOpen(true)}
                 onMouseLeave={() => setOpen(false)}
-                className="flex items-center justify-between bg-orange-500 m-3 mx-auto h-14 w-10/12 md:w-1/2 hover:w-full ease-in-out duration-500 rounded-full">
+                className="flex items-center justify-between bg-orange-500 m-3 mx-auto h-14 w-10/12 md:w-1/2 hover:w-full ease-in-out duration-500 rounded-full text-white">
                 <div className=" text-white">
-                    <span className="btn btn-ghost rounded-full mx-1 normal-case text-xl text-white">Todo</span>
+                    <span className="btn btn-ghost rounded-full mx-1 normal-case text-xl text-white">ToDo</span>
                 </div>
                 <div className={` ${open ? "hidden md:block ease-in-out duration-500" : "hidden"} `}>
                     <ul className="menu menu-horizontal p-0">
                         <ul className="menu menu-horizontal p-0">
-                            <li><a className=' text-white'>Completed</a></li>
+                            <li><a>Completed</a></li>
                             <li><a>Remain</a></li>
                             <li><a>Deleted</a></li>
                         </ul>
