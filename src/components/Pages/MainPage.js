@@ -5,9 +5,7 @@ import TodoOutput from './TodoOutput';
 const MainPage = () => {
     return (
         <div>
-            <div className='flex justify-center'>
-                <TodoInput></TodoInput>
-            </div>
+            <TodoInput></TodoInput>
             <TodoOutput></TodoOutput>
         </div>
     );
