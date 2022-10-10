@@ -11,7 +11,7 @@ const Header = () => {
             <div
                 onMouseEnter={() => setOpen(true)}
                 onMouseLeave={() => setOpen(false)}
-                className="flex items-center justify-between bg-red-500 m-3 mx-auto h-14 w-10/12 md:w-1/2 hover:w-full ease-in-out duration-500 rounded-full text-white h-24">
+                className="flex items-center justify-between bg-red-500 m-3 mx-auto w-10/12 md:w-8/12 hover:w-full ease-in-out duration-500 rounded-full text-white h-24">
                 <div className=" text-white">
                     <div className="dropdown">
                         <label tabIndex="0" className="btn btn-ghost rounded-full m-1 md:hidden lg:hidden">
