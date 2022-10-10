@@ -11,7 +11,7 @@ const Header = () => {
             <div
                 onMouseEnter={() => setOpen(true)}
                 onMouseLeave={() => setOpen(false)}
-                className="flex items-center justify-between bg-red-500 m-3 mx-auto h-14 w-10/12 md:w-1/2 hover:w-full ease-in-out duration-500 rounded-full text-white">
+                className="flex items-center justify-between bg-red-500 m-3 mx-auto h-14 w-10/12 md:w-1/2 hover:w-full ease-in-out duration-500 rounded-full text-white h-24">
                 <div className=" text-white">
                     <div className="dropdown">
                         <label tabIndex="0" className="btn btn-ghost rounded-full m-1 md:hidden lg:hidden">
@@ -23,14 +23,14 @@ const Header = () => {
                             <li><a>Deleted</a></li>
                         </ul>
                     </div>
-                    <span className="btn btn-ghost rounded-full mx-1 normal-case text-xl text-white">ToDo</span>
+                    <span className="rounded-full mx-1 normal-case text-3xl text-white ml-10 btn btn-error">ToDo</span>
                 </div>
                 <div className={` ${open ? "hidden md:block ease-in-out duration-500" : "hidden"} `}>
                     <ul className="menu menu-horizontal p-0">
                         <ul className="menu menu-horizontal p-0">
-                            <li><a>Completed</a></li>
-                            <li><a>Remain</a></li>
-                            <li><a>Deleted</a></li>
+                            <li className='text-2xl mr-2 hover:text-gray-500'>Completed</li>
+                            <li className='text-2xl mr-2 hover:text-gray-500'>Remain</li>
+                            <li className='text-2xl mr-2 hover:text-gray-500'>Deleted</li>
                         </ul>
                     </ul>
                 </div>

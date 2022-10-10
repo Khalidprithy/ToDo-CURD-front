@@ -14,9 +14,8 @@ const TodoOutput = () => {
 
     return (
         <div className='mt-5'>
-            <h4 className='font-mono pb-4'>All Tasks</h4>
+            <h4 className='font-mono pb-4 text-2xl'>All Tasks</h4>
             <div>
-
                 {
                     tasks.map(task => <Task
                         key={task._id}
@@ -24,8 +23,8 @@ const TodoOutput = () => {
                     ></Task>)
                 }
                 <div className='flex justify-center gap-2 py-2'>
-                    <button className='btn btn-xs btn-error rounded-md'>Delete All</button>
-                    <button className='btn btn-xs btn-success rounded-md'>All Completed</button>
+                    <button className='btn btn-md btn-error rounded-md'>Delete All</button>
+                    <button className='btn btn-md btn-success rounded-md'>All Completed</button>
                 </div>
             </div>
         </div>
