@@ -1,30 +1,74 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
+import { toast } from 'react-hot-toast';
 import Task from './Task';
 
-const TodoOutput = () => {
+const TodoOutput = ({ todoData, isLoading, refetch }) => {
 
-    const [tasks, setTasks] = useState([])
-
-    useEffect(() => {
-        fetch('http://localhost:5000/tasks')
+    const handleDelete = id => {
+        fetch(`http://localhost:5000/task/${id}`, {
+            method: 'DELETE',
+        })
             .then(res => res.json())
-            .then(data => setTasks(data))
-    }, [])
+            .then(data => {
+                console.log(data);
+                refetch();
+                toast.success('Deleted Successfully')
+            })
+    }
+
+    const handleDeleteAll = () => {
+
+        fetch(`http://localhost:5000/tasks`, {
+            method: 'DELETE',
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                refetch();
+                toast.success('All Data Deleted Successfully')
+            })
+    }
+
+
 
     return (
         <div className='mt-5'>
             <h4 className='font-mono pb-4 text-2xl'>All Tasks</h4>
             <div>
                 {
-                    tasks.map(task => <Task
+                    todoData?.map(task => <Task
                         key={task._id}
                         task={task}
+                        handleDelete={handleDelete}
                     ></Task>)
                 }
                 <div className='flex justify-center gap-2 py-2'>
-                    <button className='btn btn-md btn-error rounded-md'>Delete All</button>
-                    <button className='btn btn-md btn-success rounded-md'>All Completed</button>
+                    {
+                        todoData.length === 0 ? ''
+                            :
+                            <>
+                                <label
+                                    htmlFor="deleteAllModal" className='btn btn-md btn-error rounded-md text-white'>Delete All</label>
+                                <button className='btn btn-md btn-success rounded-md text-white'>All Completed</button>
+                            </>
+
+                    }
+                </div>
+            </div>
+            {/* Delete all modal */}
+            <input type="checkbox" id="deleteAllModal" className="modal-toggle" />
+            <div className="modal modal-bottom sm:modal-middle backdrop-blur-md">
+                <div className="modal-box bg-gray-50">
+                    <h3 className="font-bold text-lg">Are you sure you want to delete all of your todo tasks? </h3>
+                    <p className="py-4 text-base font-medium text-red-400">This action cannot be undone.</p>
+                    <div className="modal-action">
+                        <label
+                            onClick={handleDeleteAll}
+                            htmlFor="deleteAllModal"
+                            className='btn btn-sm btn-error rounded-md text-white'>Confirm</label>
+                        <label htmlFor="deleteAllModal" className="btn btn-sm">Cancel</label>
+                    </div>
                 </div>
             </div>
         </div>
