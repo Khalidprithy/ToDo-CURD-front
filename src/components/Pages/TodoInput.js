@@ -34,7 +34,7 @@ const TodoInput = ({ refetch }) => {
             >
                 <div className='flex items-center justify-center gap-2 w-full'>
                     <input className='border rounded-md px-4 py-1 focus:outline-red-500 w-2/3 md:w-6/12 h-12' type="text" name="task" id="task" placeholder='Write your task here' maxlength="100" required />
-                    <input className='btn btn-md' type="submit" value="Add Task" />
+                    <input className='btn btn-md bg-teal-500 border-0' type="submit" value="Add Task" />
                 </div>
             </form>
         </div>

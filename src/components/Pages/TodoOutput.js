@@ -52,7 +52,7 @@ const TodoOutput = ({ todoData, isLoading, refetch }) => {
                                     className={
                                         "text-base font-semibold capitalize px-5 py-1 md:py-3 shadow rounded-md block leading-normal " +
                                         (openTab === 1
-                                            ? "text-gray-800 bg-white border-b-2 border-red-400"
+                                            ? "text-teal-400 bg-white border-b-2 border-red-400 shadow-md"
                                             : "text-gray-800 bg-white")
                                     }
                                     onClick={e => {
@@ -71,7 +71,7 @@ const TodoOutput = ({ todoData, isLoading, refetch }) => {
                                     className={
                                         "text-base font-semibold capitalize px-5 py-1 md:py-3 shadow rounded-md block leading-normal " +
                                         (openTab === 2
-                                            ? "text-gray-800 bg-white border-b-2 border-red-400"
+                                            ? "text-teal-400 bg-white border-b-2 border-red-400 shadow-md"
                                             : "text-gray-800 bg-white")
                                     }
                                     onClick={e => {
@@ -132,7 +132,7 @@ const TodoOutput = ({ todoData, isLoading, refetch }) => {
                             <>
                                 <label
                                     htmlFor="deleteAllModal" className='btn btn-sm md:btn-md btn-error rounded-md text-white'>Delete All</label>
-                                <button className='btn btn-sm md:btn-md btn-success rounded-md text-white'>All Completed</button>
+                                <button className='btn btn-sm md:btn-md bg-teal-500 border-0 rounded-md text-white'>All Completed</button>
                             </>
 
                     }
