@@ -12,9 +12,10 @@ const Header = () => {
             <div
                 onMouseEnter={() => setOpen(true)}
                 onMouseLeave={() => setOpen(false)}
-                className="flex items-center justify-between bg-teal-500 m-3 mx-auto w-11/12 md:w-8/12 ease-in-out duration-500 rounded-full text-white h-20">
+                className="flex items-center justify-between bg-teal-500 m-3 mx-auto w-11/12 md:w-8/12 ease-in-out duration-500 rounded-md text-white h-20">
                 <div className="text-white flex items-center justify-start">
-                    <div className="dropdown">
+
+                    {/* <div className="dropdown">
                         <label tabIndex="0" className="btn btn-ghost rounded-full m-1 md:hidden lg:hidden">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                         </label>
@@ -23,10 +24,11 @@ const Header = () => {
                             <li><a>Remain</a></li>
                             <li><a>Deleted</a></li>
                         </ul>
-                    </div>
-                    <div className='flex items-center gap-2 ml-10'>
+
+                    </div> */}
+                    <div className='flex items-center gap-2 ml-4 md:ml-10'>
                         <BsCheck2Square className='text-2xl' />
-                        <h4 className='text-3xl'>Todo</h4>
+                        <h4 className='text-xl md:text-3xl'>Todo</h4>
                     </div>
                 </div>
                 {/* <div className={` ${open ? "hidden md:block ease-in-out duration-500" : "hidden"} `}>

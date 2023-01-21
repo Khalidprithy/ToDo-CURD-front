@@ -28,7 +28,7 @@ const TodoInput = ({ refetch }) => {
     }
     return (
         <div className=''>
-            <h1 className='text-3xl font-bold m-6 font-mono'>Add your Tasks</h1>
+            <h1 className='text-xl md:text-3xl font-bold m-6 font-mono'>Add your Tasks</h1>
             <form
                 onSubmit={handleTask}
             >

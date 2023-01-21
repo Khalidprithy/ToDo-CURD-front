@@ -50,7 +50,7 @@ const TodoOutput = ({ todoData, isLoading, refetch }) => {
                             <li className="flex-auto text-center w-full">
                                 <a
                                     className={
-                                        "text-base font-semibold capitalize px-5 py-3 shadow rounded-md block leading-normal " +
+                                        "text-base font-semibold capitalize px-5 py-1 md:py-3 shadow rounded-md block leading-normal " +
                                         (openTab === 1
                                             ? "text-gray-800 bg-white border-b-2 border-red-400"
                                             : "text-gray-800 bg-white")
@@ -69,7 +69,7 @@ const TodoOutput = ({ todoData, isLoading, refetch }) => {
                             <li className="flex-auto text-center w-full">
                                 <a
                                     className={
-                                        "text-base font-semibold capitalize px-5 py-3 shadow rounded-md block leading-normal " +
+                                        "text-base font-semibold capitalize px-5 py-1 md:py-3 shadow rounded-md block leading-normal " +
                                         (openTab === 2
                                             ? "text-gray-800 bg-white border-b-2 border-red-400"
                                             : "text-gray-800 bg-white")
@@ -88,7 +88,7 @@ const TodoOutput = ({ todoData, isLoading, refetch }) => {
                         </ul>
                     </div>
                     <div className="relative flex flex-col min-w-0 break-words w-full mb-6">
-                        <div className="px-4 py-5 flex-auto">
+                        <div className="px-1 md:px-4 py-5 flex-auto">
                             <div className="tab-content tab-space">
                                 <div className={openTab === 1 ? "block" : "hidden"} id="link1">
                                     <motion.ul initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}>
@@ -131,8 +131,8 @@ const TodoOutput = ({ todoData, isLoading, refetch }) => {
                             :
                             <>
                                 <label
-                                    htmlFor="deleteAllModal" className='btn btn-md btn-error rounded-md text-white'>Delete All</label>
-                                <button className='btn btn-md btn-success rounded-md text-white'>All Completed</button>
+                                    htmlFor="deleteAllModal" className='btn btn-sm md:btn-md btn-error rounded-md text-white'>Delete All</label>
+                                <button className='btn btn-sm md:btn-md btn-success rounded-md text-white'>All Completed</button>
                             </>
 
                     }

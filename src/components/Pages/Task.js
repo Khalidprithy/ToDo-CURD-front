@@ -43,7 +43,7 @@ const Task = ({ task, handleDelete, refetch, isLoading }) => {
                 }}
                 className='h-8 w-8 accent-green-400'
                 type="checkbox" name="todoCheck" id="" />
-            <h4 className={`border-2 p-1 rounded-md w-6/12 text-left text-xl hover:shadow-md ${task?.status ? 'text-green-400 blur-[1px]' : 'text-gray-800'}`}>{task.task}</h4>
+            <h4 className={`border-2 p-1 rounded-md w-6/12 text-left text-xl hover:shadow-md ${task?.status ? 'text-green-400 blur-[1px]' : 'text-gray-800 dark:text-gray-100'}`}>{task.task}</h4>
             {
                 !task?.status &&
                 <label htmlFor="editModal" ><AiFillEdit className='text-4xl p-1 text-blue-400 hover:text-blue-600 border rounded-md'></AiFillEdit></label>
