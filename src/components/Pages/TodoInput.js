@@ -8,10 +8,8 @@ const TodoInput = ({ refetch }) => {
         const task = event.target.task.value;
         const tasks = {
             "task": task,
-            "status": null,
-
+            "status": false,
         }
-
         fetch('http://localhost:5000/tasks', {
             method: "POST",
             headers: {
@@ -25,6 +23,7 @@ const TodoInput = ({ refetch }) => {
                 refetch();
                 toast.success("Task added")
             })
+        event.target.reset();
 
     }
     return (
@@ -34,7 +33,7 @@ const TodoInput = ({ refetch }) => {
                 onSubmit={handleTask}
             >
                 <div className='flex items-center justify-center gap-2 w-full'>
-                    <input className='border rounded-md px-4 py-1 focus:outline-red-500 w-2/3 md:w-6/12 h-12' type="text" name="task" id="task" placeholder='Add ToDo' />
+                    <input className='border rounded-md px-4 py-1 focus:outline-red-500 w-2/3 md:w-6/12 h-12' type="text" name="task" id="task" placeholder='Write your task here' maxlength="100" required />
                     <input className='btn btn-md' type="submit" value="Add Task" />
                 </div>
             </form>

@@ -1,9 +1,12 @@
 import React, { useEffect } from 'react';
-import { useState } from 'react';
+import { motion } from 'framer-motion';
 import { toast } from 'react-hot-toast';
+import EditModal from './EditModal';
 import Task from './Task';
 
 const TodoOutput = ({ todoData, isLoading, refetch }) => {
+
+    const [openTab, setOpenTab] = React.useState(1);
 
     const handleDelete = id => {
         fetch(`http://localhost:5000/task/${id}`, {
@@ -30,22 +33,101 @@ const TodoOutput = ({ todoData, isLoading, refetch }) => {
             })
     }
 
-
+    const sortedData = todoData?.sort((a, b) => {
+        if (a.status === b.status) return 0;
+        return (a.status === false) ? -1 : (b.status === false) ? 1 : (a.status === true) ? -1 : (b.status === true) ? 1 : 0;
+    });
 
     return (
         <div className='mt-5'>
-            <h4 className='font-mono pb-4 text-2xl'>All Tasks</h4>
             <div>
-                {
-                    todoData?.map(task => <Task
-                        key={task._id}
-                        task={task}
-                        handleDelete={handleDelete}
-                    ></Task>)
-                }
+                <div className="w-full mt-6">
+                    <div className='flex items-center justify-center'>
+                        <ul
+                            className="flex gap-2 items-center justify-center mb-0 list-none pt-3 pb-4 mx-6"
+                            role="tablist"
+                        >
+                            <li className="flex-auto text-center w-full">
+                                <a
+                                    className={
+                                        "text-base font-semibold capitalize px-5 py-3 shadow rounded-md block leading-normal " +
+                                        (openTab === 1
+                                            ? "text-gray-800 bg-white border-b-2 border-red-400"
+                                            : "text-gray-800 bg-white")
+                                    }
+                                    onClick={e => {
+                                        e.preventDefault();
+                                        setOpenTab(1);
+                                    }}
+                                    data-toggle="tab"
+                                    href="#link1"
+                                    role="tablist"
+                                >
+                                    All Task
+                                </a>
+                            </li>
+                            <li className="flex-auto text-center w-full">
+                                <a
+                                    className={
+                                        "text-base font-semibold capitalize px-5 py-3 shadow rounded-md block leading-normal " +
+                                        (openTab === 2
+                                            ? "text-gray-800 bg-white border-b-2 border-red-400"
+                                            : "text-gray-800 bg-white")
+                                    }
+                                    onClick={e => {
+                                        e.preventDefault();
+                                        setOpenTab(2);
+                                    }}
+                                    data-toggle="tab"
+                                    href="#link2"
+                                    role="tablist"
+                                >
+                                    Completed
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div className="relative flex flex-col min-w-0 break-words w-full mb-6">
+                        <div className="px-4 py-5 flex-auto">
+                            <div className="tab-content tab-space">
+                                <div className={openTab === 1 ? "block" : "hidden"} id="link1">
+                                    <motion.ul initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}>
+                                        {
+                                            sortedData?.map(task => <Task
+                                                key={task._id}
+                                                task={task}
+                                                refetch={refetch}
+                                                isLoading={isLoading}
+                                                handleDelete={handleDelete}
+                                            ></Task>)
+                                        }
+                                    </motion.ul>
+                                </div>
+                                <div className={openTab === 2 ? "block" : "hidden"} id="link2">
+                                    {
+                                        todoData?.filter(value => {
+                                            if (value.status === true) {
+                                                return value;
+                                            }
+                                        }).map(task => <Task
+                                            key={task._id}
+                                            task={task}
+                                            refetch={refetch}
+                                            isLoading={isLoading}
+                                            handleDelete={handleDelete}
+                                        ></Task>)
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+
                 <div className='flex justify-center gap-2 py-2'>
                     {
-                        todoData.length === 0 ? ''
+                        todoData?.length === 0 ? ''
                             :
                             <>
                                 <label
@@ -71,6 +153,8 @@ const TodoOutput = ({ todoData, isLoading, refetch }) => {
                     </div>
                 </div>
             </div>
+            {/* Edit Modal */}
+            <EditModal />
         </div>
     );
 };

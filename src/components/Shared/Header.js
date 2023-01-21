@@ -12,7 +12,7 @@ const Header = () => {
             <div
                 onMouseEnter={() => setOpen(true)}
                 onMouseLeave={() => setOpen(false)}
-                className="flex items-center justify-between bg-teal-500 m-3 mx-auto w-10/12 md:w-8/12 hover:w-full ease-in-out duration-500 rounded-full text-white h-20">
+                className="flex items-center justify-between bg-teal-500 m-3 mx-auto w-11/12 md:w-8/12 ease-in-out duration-500 rounded-full text-white h-20">
                 <div className="text-white flex items-center justify-start">
                     <div className="dropdown">
                         <label tabIndex="0" className="btn btn-ghost rounded-full m-1 md:hidden lg:hidden">
@@ -29,7 +29,7 @@ const Header = () => {
                         <h4 className='text-3xl'>Todo</h4>
                     </div>
                 </div>
-                <div className={` ${open ? "hidden md:block ease-in-out duration-500" : "hidden"} `}>
+                {/* <div className={` ${open ? "hidden md:block ease-in-out duration-500" : "hidden"} `}>
                     <ul className="menu menu-horizontal p-0">
                         <ul className="menu menu-horizontal p-0">
                             <li className='text-2xl mr-2 hover:text-gray-500'>Completed</li>
@@ -37,7 +37,7 @@ const Header = () => {
                             <li className='text-2xl mr-2 hover:text-gray-500'>Deleted</li>
                         </ul>
                     </ul>
-                </div>
+                </div> */}
 
                 <div className="flex">
                     <button className="btn btn-ghost btn-circle">
