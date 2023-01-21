@@ -5,7 +5,7 @@ import TodoOutput from './TodoOutput';
 
 const MainPage = () => {
 
-    const { data: todoData, isLoading, refetch } = useQuery('todoData', () => fetch(`http://localhost:5000/tasks`, {
+    const { data: todoData, isLoading, refetch } = useQuery('todoData', () => fetch(`https://todo-server-ze08.onrender.com/tasks`, {
         method: 'GET',
         headers: {
             'content-type': 'application/json'

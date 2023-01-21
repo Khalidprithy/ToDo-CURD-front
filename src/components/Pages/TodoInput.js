@@ -10,7 +10,7 @@ const TodoInput = ({ refetch }) => {
             "task": task,
             "status": false,
         }
-        fetch('http://localhost:5000/tasks', {
+        fetch('https://todo-server-ze08.onrender.com/tasks', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'

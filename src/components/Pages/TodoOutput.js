@@ -9,7 +9,7 @@ const TodoOutput = ({ todoData, isLoading, refetch }) => {
     const [openTab, setOpenTab] = React.useState(1);
 
     const handleDelete = id => {
-        fetch(`http://localhost:5000/task/${id}`, {
+        fetch(`https://todo-server-ze08.onrender.com/task/${id}`, {
             method: 'DELETE',
         })
             .then(res => res.json())
@@ -22,7 +22,7 @@ const TodoOutput = ({ todoData, isLoading, refetch }) => {
 
     const handleDeleteAll = () => {
 
-        fetch(`http://localhost:5000/tasks`, {
+        fetch(`https://todo-server-ze08.onrender.com/tasks`, {
             method: 'DELETE',
         })
             .then(res => res.json())

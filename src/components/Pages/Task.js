@@ -14,7 +14,7 @@ const Task = ({ task, handleDelete, refetch, isLoading }) => {
             task: task.name,
             status: isChecked
         }
-        const url = `http://localhost:5000/task/${task._id}`;
+        const url = `https://todo-server-ze08.onrender.com/task/${task._id}`;
         await fetch(url, {
             method: 'PUT',
             headers: {
