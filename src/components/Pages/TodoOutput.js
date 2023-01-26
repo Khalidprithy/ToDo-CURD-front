@@ -3,10 +3,23 @@ import { motion } from 'framer-motion';
 import { toast } from 'react-hot-toast';
 import EditModal from './EditModal';
 import Task from './Task';
+import { useState } from 'react';
 
 const TodoOutput = ({ todoData, isLoading, refetch }) => {
 
     const [openTab, setOpenTab] = React.useState(1);
+    const [updateTodo, setUpdateTodo] = useState();
+    const [tempUpdateTodo, setTempUpdateTodo] = useState();
+
+    useEffect(() => {
+        const url = `https://simmibackend.pythonanywhere.com/api/publication/`;
+        fetch(url)
+            .then(res => res.json())
+            .then(data => {
+
+            })
+    }, []);
+
 
     const handleDelete = id => {
         fetch(`https://todo-server-ze08.onrender.com/task/${id}`, {
@@ -98,9 +111,21 @@ const TodoOutput = ({ todoData, isLoading, refetch }) => {
                                             refetch={refetch}
                                             isLoading={isLoading}
                                             handleDelete={handleDelete}
+                                            setUpdateTodo={setUpdateTodo}
+                                            setTempUpdateTodo={setTempUpdateTodo}
                                         ></Task>)
                                     }
                                 </motion.ul>
+                                {/* Edit Modal */}
+                                {
+                                    updateTodo &&
+                                    <EditModal
+                                        updateTodo={updateTodo}
+                                        tempUpdateTodo={tempUpdateTodo}
+                                        setTempUpdateTodo={setTempUpdateTodo}
+                                    />
+                                }
+
                             </div>
                             <div className={openTab === 2 ? "block" : "hidden"} id="link2">
                                 {
@@ -128,8 +153,8 @@ const TodoOutput = ({ todoData, isLoading, refetch }) => {
                             :
                             <>
                                 <label
-                                    htmlFor="deleteAllModal" className='btn btn-sm md:btn-md btn-error rounded-md text-white'>Delete All</label>
-                                <button className='btn btn-sm md:btn-md bg-teal-500 border-0 rounded-md text-white'>All Completed</button>
+                                    htmlFor="deleteAllModal" className='btn btn-sm md:btn-md btn-error hover:bg-red-500 rounded-md text-white'>Delete All</label>
+                                <button className='btn btn-sm md:btn-md bg-teal-500 hover:bg-teal-600 border-0 rounded-md text-white'>All Completed</button>
                             </>
 
                     }
@@ -137,7 +162,7 @@ const TodoOutput = ({ todoData, isLoading, refetch }) => {
             </div>
             {/* Delete all modal */}
             <input type="checkbox" id="deleteAllModal" className="modal-toggle" />
-            <div className="modal modal-bottom sm:modal-middle backdrop-blur-md">
+            <div className="modal backdrop-blur-md">
                 <div className="modal-box bg-gray-50">
                     <h3 className="font-bold text-lg">Are you sure you want to delete all of your todo tasks? </h3>
                     <p className="py-4 text-base font-medium text-red-400">This action cannot be undone.</p>
@@ -145,13 +170,12 @@ const TodoOutput = ({ todoData, isLoading, refetch }) => {
                         <label
                             onClick={handleDeleteAll}
                             htmlFor="deleteAllModal"
-                            className='btn btn-sm btn-error rounded-md text-white'>Confirm</label>
-                        <label htmlFor="deleteAllModal" className="btn btn-sm">Cancel</label>
+                            className='btn btn-sm btn-error hover:bg-red-500 rounded-md text-white'>Confirm</label>
+                        <label htmlFor="deleteAllModal" className="btn btn-sm rounded-md">Cancel</label>
                     </div>
                 </div>
             </div>
-            {/* Edit Modal */}
-            <EditModal />
+
         </div>
     );
 };
