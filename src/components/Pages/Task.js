@@ -10,7 +10,7 @@ const Task = ({ task, handleDelete, refetch, isLoading, setUpdateTodo, setTempUp
     const handleEditOne = async () => {
 
         const updatedProduct = {
-            task: task.name,
+            task: task.task,
             status: isChecked
         }
         const url = `https://todo-server-ze08.onrender.com/task/${task._id}`;
