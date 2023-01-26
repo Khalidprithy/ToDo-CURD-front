@@ -2,12 +2,10 @@ import React from 'react';
 import { useState } from 'react';
 import { AiFillEdit, AiFillDelete } from 'react-icons/ai';
 import Loading from '../Shared/Loading';
-import EditModal from './EditModal';
 
 const Task = ({ task, handleDelete, refetch, isLoading, setUpdateTodo, setTempUpdateTodo }) => {
 
     const [isChecked, setIsChecked] = useState(false);
-    console.log(task.status)
 
     const handleEditOne = async () => {
 

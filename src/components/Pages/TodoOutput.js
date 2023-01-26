@@ -50,6 +50,7 @@ const TodoOutput = ({ todoData, isLoading, refetch }) => {
         if (a.status === b.status) return 0;
         return (a.status === false) ? -1 : (b.status === false) ? 1 : (a.status === true) ? -1 : (b.status === true) ? 1 : 0;
     });
+    console.log(sortedData)
 
     return (
         <div className='mt-2 md:mt-5'>
@@ -103,19 +104,17 @@ const TodoOutput = ({ todoData, isLoading, refetch }) => {
                     <div className="px-1 md:px-4 py-5 flex-auto">
                         <div className="tab-content tab-space">
                             <div className={openTab === 1 ? "block" : "hidden"} id="link1">
-                                <motion.ul initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}>
-                                    {
-                                        sortedData?.map(task => <Task
-                                            key={task._id}
-                                            task={task}
-                                            refetch={refetch}
-                                            isLoading={isLoading}
-                                            handleDelete={handleDelete}
-                                            setUpdateTodo={setUpdateTodo}
-                                            setTempUpdateTodo={setTempUpdateTodo}
-                                        ></Task>)
-                                    }
-                                </motion.ul>
+                                {
+                                    sortedData?.map(task => <Task
+                                        key={task._id}
+                                        task={task}
+                                        refetch={refetch}
+                                        isLoading={isLoading}
+                                        handleDelete={handleDelete}
+                                        setUpdateTodo={setUpdateTodo}
+                                        setTempUpdateTodo={setTempUpdateTodo}
+                                    ></Task>)
+                                }
                                 {/* Edit Modal */}
                                 {
                                     updateTodo &&
@@ -123,6 +122,7 @@ const TodoOutput = ({ todoData, isLoading, refetch }) => {
                                         updateTodo={updateTodo}
                                         tempUpdateTodo={tempUpdateTodo}
                                         setTempUpdateTodo={setTempUpdateTodo}
+                                        refetch={refetch}
                                     />
                                 }
 
@@ -163,7 +163,7 @@ const TodoOutput = ({ todoData, isLoading, refetch }) => {
             {/* Delete all modal */}
             <input type="checkbox" id="deleteAllModal" className="modal-toggle" />
             <div className="modal backdrop-blur-md">
-                <div className="modal-box bg-gray-50">
+                <div className="modal-box bg-gray-50 dark:bg-gray-700">
                     <h3 className="font-bold text-lg">Are you sure you want to delete all of your todo tasks? </h3>
                     <p className="py-4 text-base font-medium text-red-400">This action cannot be undone.</p>
                     <div className="modal-action">
@@ -171,7 +171,7 @@ const TodoOutput = ({ todoData, isLoading, refetch }) => {
                             onClick={handleDeleteAll}
                             htmlFor="deleteAllModal"
                             className='btn btn-sm btn-error hover:bg-red-500 rounded-md text-white'>Confirm</label>
-                        <label htmlFor="deleteAllModal" className="btn btn-sm rounded-md">Cancel</label>
+                        <label htmlFor="deleteAllModal" className="btn btn-sm rounded-md text-white">Cancel</label>
                     </div>
                 </div>
             </div>
